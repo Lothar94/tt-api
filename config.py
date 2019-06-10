@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import json
+
 dbType = "mysql"    # mysql | test
 
 connection = {
@@ -10,3 +12,5 @@ connection = {
     "password": "",
     "database": "tt-api"
 }
+
+error400Message = json.dumps({"code": 400, "error": "Bad Form"})

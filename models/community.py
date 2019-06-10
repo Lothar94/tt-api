@@ -13,25 +13,23 @@ import json
 class Community(object):
 
     def __init__(self, name, description, latitude, longitude, gestorId):
-        setattr(Community, 'name', name)
-        setattr(Community, 'coords', [latitude, longitude])
-        setattr(Community, 'gestorId', gestorId)
-        setattr(Community, 'description', description)
+        self.name = name
+        self.coords = [latitude, longitude]
+        self.gestorId = gestorId
+        self.description = description
 
     def setCoords(self, coords):
-        setattr(Community, 'coords', coords)
+        self.coords = coords
 
     def setDescription(self, description):
-        setattr(Community, 'description', description)
+        self.description = description
 
     def setGestorId(self, gestorId):
-        setattr(Community, 'gestorId', gestorId)
+        self.gestorId = gestorId
 
     def toDict(self):
-        response = {}
-        attrs = [a for a in dir(Community) if not a.startswith('__') and not callable(getattr(Community,a))]
-        for attr in attrs:
-            response[attr] = getattr(Community, attr)
+        response = {"name": self.name, "coords": self.coords, "gestorId": self.gestorId, "description": self.description}
+
         return response
 
 ''' MYSQL
